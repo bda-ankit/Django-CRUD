@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+{% block start %}
+
+  <br>
+<h2 class="container">Django app | Ankit</h2>
+<hr>
+<br>
+
+<table style="width:100%" class="container">
+  <tr>
+    <th>Sr. No.</th>
+    <th>Name</th>   
+    <th>Age</th>
+    <th>Can vote</th>
+  </tr>
+
+  {% for people in peoples %}
+  <tr>
+    <td>{{forloop.counter}}{{truncatechars}}</td>
+    <td>{{people.name}}</td>
+    <td>{{people.age}}</td>
+    <td {% if not people.age >= 18 %} style="background:red" {% endif %}>
+      {% if people.age >= 18 %}
+      👍
+      {% else %}
+      👎
+      {% endif %}
+    </td>
+  </tr>
+{% endfor %}
+</table>
+<p>
+{{text}}
+</p>
+
+<p>
+  {% if 'Erica' in listof and 'axx' in listof%}
+  🥵
+  {% endif %}
+</p> 
+
+<a href="/contact">
+Visit Contact Page
+</a>
+<br>
+<a href="/about">
+Visit about Page
+</a>
+
+{% endblock %}
